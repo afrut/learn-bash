@@ -1,0 +1,4 @@
+# The shebang specifies which interpreter to be used to run a script.
+# Add the directory containing this script to PATH and call this script with just "shebang".
+#!/bin/bash
+echo "shebang ran"

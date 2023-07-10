@@ -1,0 +1,10 @@
+# Call this script by source envars
+# The source commands runs the commands contained in the argument file in the
+# calling session.
+
+# Calling session will have the environment variable MSG
+export MSG="Hello, world!"
+
+# Add to the calling session's PATH variable
+export PATH=$PATH:"."
+
