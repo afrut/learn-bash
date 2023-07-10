@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# Define a function
+some_func() {
+    echo "$1 received in some_func"
+}
+
 # Run all commands in envars in this script
 source envars
 
@@ -32,3 +38,6 @@ cd $CWD
 # Run a script that is now in PATH without using ./, but using shebang
 shebang
 
+# Call a function and store its return in a variable
+RET=$(some_func foo)
+echo "Return is $RET"
