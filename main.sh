@@ -62,3 +62,11 @@ if test -f "./playarea/foo.txt"; then
 else
     echo "./playarea/foo.txt does not exist."
 fi
+# Write content to a file
+echo "some content" > $FILE
+
+# Append content to file
+echo "some more content" >> $FILE
+
+# Print contents of file to console
+cat $FILE
