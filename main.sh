@@ -18,10 +18,14 @@ printf "I'm alive\n"
 # $() takes the output of a command stores it in a variable
 # Store the path of the current directory in CWD
 CWD=$(pwd)
-PLAYAREA="./playarea"
+
+# Set some more variables
+PLAY_AREA="./playarea"
+FILE_NAME="foo.txt"
+FILE="$PLAY_AREA/$FILE_NAME"
 
 # Create a file foo.txt in the playarea directory
-touch $PLAYAREA/foo.txt
+touch $FILE
 
 # List directory contents of playarea
 echo "./playarea contains:"
@@ -62,6 +66,7 @@ if test -f "./playarea/foo.txt"; then
 else
     echo "./playarea/foo.txt does not exist."
 fi
+
 # Write content to a file
 echo "some content" > $FILE
 
@@ -70,3 +75,21 @@ echo "some more content" >> $FILE
 
 # Print contents of file to console
 cat $FILE
+
+# Add multi-line content to a file
+cat << EOF >> $FILE
+even more content line 1
+even more content line 2
+even more content line 3
+EOF
+cat $FILE
+
+# Store multi-line content in a variable as a single line
+MULTILINE=$(cat << \
+EOF
+word1
+word2
+word3
+EOF
+)
+echo $MULTILINE
