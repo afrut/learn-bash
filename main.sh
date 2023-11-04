@@ -41,3 +41,24 @@ shebang
 # Call a function and store its return in a variable
 RET=$(some_func foo)
 echo "Return is $RET"
+
+# Check if a file exists, regardless of file type.
+if test -e "./playarea"; then
+    echo "./playarea exists."
+else
+    echo "./playarea does not exist."
+fi
+
+# Check if a regular file exists. playarea is a directory.
+if test -f "./playarea"; then
+    echo "./playarea exists."
+else
+    echo "./playarea does not exist."
+fi
+
+# Check if a regular file exists. playarea/foo.txt is a file.
+if test -f "./playarea/foo.txt"; then
+    echo "./playarea/foo.txt exists."
+else
+    echo "./playarea/foo.txt does not exist."
+fi
