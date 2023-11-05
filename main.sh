@@ -114,3 +114,14 @@ mkdir deleteme &&\
 
 # Recursively remove a directory
 rm -rf deleteme
+
+# Get the parent directory of a file
+echo $(dirname "./playarea/foo.txt")
+
+# Get the directory containing this script
+                                   "${BASH_SOURCE[0]}"                          # The name of this script
+                        dirname -- "${BASH_SOURCE[0]}"                          # The name of the directory containing this script
+              cd -- "$( dirname -- "${BASH_SOURCE[0]}" )"                       # Navigate into the directory containing this script
+              cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null          # Navigate into the directory containing this script and discard output
+              cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd   # After navigating into directory, get the current working directory
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # Then store it in a variable
