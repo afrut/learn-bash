@@ -106,3 +106,8 @@ ls -- --help # fails because --help is interpreted as a directory name
 
 # Returns the name of script, ie "./main.sh"
 echo "${BASH_SOURCE[0]}"
+
+# Execute a command after the successful execution of another
+mkdir deleteme &&\
+    echo "Hello, World!" > "./deleteme/deleteme_file.txt" &&\
+    cat "deleteme/deleteme_file.txt"
