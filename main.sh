@@ -93,3 +93,7 @@ word3
 EOF
 )
 echo $MULTILINE
+
+# Redirect stdout and stderr to append to a file
+ls -lt playarea &> "./playarea/redirected.txt"
+ls -lt non_existent_dir &>> "./playarea/redirected.txt"
