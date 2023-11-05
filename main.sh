@@ -111,3 +111,6 @@ echo "${BASH_SOURCE[0]}"
 mkdir deleteme &&\
     echo "Hello, World!" > "./deleteme/deleteme_file.txt" &&\
     cat "deleteme/deleteme_file.txt"
+
+# Recursively remove a directory
+rm -rf deleteme
