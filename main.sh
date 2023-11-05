@@ -97,3 +97,7 @@ echo $MULTILINE
 # Redirect stdout and stderr to append to a file
 ls -lt playarea &> "./playarea/redirected.txt"
 ls -lt non_existent_dir &>> "./playarea/redirected.txt"
+
+# -- signals the end of optional arguments
+ls --help
+ls -- --help # fails because --help is interpreted as a directory name
