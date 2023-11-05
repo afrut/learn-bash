@@ -98,6 +98,8 @@ echo $MULTILINE
 ls -lt playarea &> "./playarea/redirected.txt"
 ls -lt non_existent_dir &>> "./playarea/redirected.txt"
 
+# Discard stdout and stderr
+ls --help &> /dev/null
+
 # -- signals the end of optional arguments
-ls --help
 ls -- --help # fails because --help is interpreted as a directory name
