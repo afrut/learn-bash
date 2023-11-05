@@ -103,3 +103,6 @@ ls --help &> /dev/null
 
 # -- signals the end of optional arguments
 ls -- --help # fails because --help is interpreted as a directory name
+
+# Returns the name of script, ie "./main.sh"
+echo "${BASH_SOURCE[0]}"
