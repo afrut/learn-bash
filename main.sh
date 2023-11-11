@@ -125,3 +125,19 @@ echo $(dirname "./playarea/foo.txt")
               cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null          # Navigate into the directory containing this script and discard output
               cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd   # After navigating into directory, get the current working directory
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # Then store it in a variable
+# Create an indexed array
+iarray=("a" "b" "c" "d" "e")
+
+# Access the second element of an indexed array
+echo "${iarray[1]}"
+
+# Echo all elements of an indexed array
+echo "${iarray[@]}"
+
+# Loop through an array
+str=""
+for letter in ${iarray[@]}; do
+    # Concatenate strings
+    str="${str}${letter}"
+done
+echo "${str}"
