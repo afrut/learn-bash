@@ -119,12 +119,13 @@ rm -rf deleteme
 echo $(dirname "./playarea/foo.txt")
 
 # Get the directory containing this script
-                                   "${BASH_SOURCE[0]}"                          # The name of this script
-                        dirname -- "${BASH_SOURCE[0]}"                          # The name of the directory containing this script
-              cd -- "$( dirname -- "${BASH_SOURCE[0]}" )"                       # Navigate into the directory containing this script
-              cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null          # Navigate into the directory containing this script and discard output
-              cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd   # After navigating into directory, get the current working directory
+#                                  "${BASH_SOURCE[0]}"                          # The name of this script
+#                       dirname -- "${BASH_SOURCE[0]}"                          # The name of the directory containing this script
+#             cd -- "$( dirname -- "${BASH_SOURCE[0]}" )"                       # Navigate into the directory containing this script
+#             cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null          # Navigate into the directory containing this script and discard output
+#             cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd   # After navigating into directory, get the current working directory
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # Then store it in a variable
+
 # Create an indexed array
 iarray=("a" "b" "c" "d" "e")
 
@@ -141,3 +142,20 @@ for letter in ${iarray[@]}; do
     str="${str}${letter}"
 done
 echo "${str}"
+
+# Create an associative array in bash
+declare -A aarray
+aarray["a"]=1
+aarray["b"]=2
+aarray["c"]=3
+
+# Access a value via key
+echo "${aarray[b]}"
+
+# Access all keys of an associative array
+echo "${!aarray[@]}"
+
+# Loop through all keys of an associative array and access their values
+for k in ${!aarray[@]}; do
+    echo "aarray[${k}] = ${aarray[${k}]}"
+done
