@@ -8,12 +8,27 @@ some_func() {
 # Run all commands in envars in this script
 source envars
 
+echo "----------------------------------------"
+echo "  Output to stdout"
+echo "----------------------------------------"
 # Print the contents of the MSG environment variable to console
 echo $MSG
 
 # Print something to console without newline
 printf "I'm alive\n"
 
+# Print with format specifiers
+printf "%s %d\n" "hello" 1
+
+# Single quotes vs double quotes. Single quotes are literal strings. Double
+# quotes perform variable expansion.
+echo 'Single quotes: ${PLAY_AREA}'
+echo "Double quotes: ${PLAY_AREA}"
+exit 0
+
+echo "----------------------------------------"
+echo "  Working with files and directories"
+echo "----------------------------------------"
 # pwd gets the path of the current directory
 # $() takes the output of a command stores it in a variable
 # Store the path of the current directory in CWD
@@ -23,11 +38,6 @@ CWD=$(pwd)
 PLAY_AREA="./playarea"
 FILE_NAME="foo.txt"
 FILE="$PLAY_AREA/$FILE_NAME"
-
-# Single quotes vs double quotes. Single quotes are literal strings. Double
-# quotes perform variable expansion.
-echo 'Single quotes: ${PLAY_AREA}'
-echo "Double quotes: ${PLAY_AREA}"
 
 # Create a file foo.txt in the playarea directory
 touch $FILE
@@ -191,3 +201,6 @@ find playarea -type f -exec echo {} + ;
 # xargs converts output to stdout to command arguments
 echo "---------- Execute a command on each result using xargs ----------"
 find playarea -type f | xargs cat
+
+# Terminate the script with no errors
+exit 0
