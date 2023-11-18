@@ -24,6 +24,11 @@ PLAY_AREA="./playarea"
 FILE_NAME="foo.txt"
 FILE="$PLAY_AREA/$FILE_NAME"
 
+# Single quotes vs double quotes. Single quotes are literal strings. Double
+# quotes perform variable expansion.
+echo 'Single quotes: ${PLAY_AREA}'
+echo "Double quotes: ${PLAY_AREA}"
+
 # Create a file foo.txt in the playarea directory
 touch $FILE
 
@@ -159,3 +164,30 @@ echo "${!aarray[@]}"
 for k in ${!aarray[@]}; do
     echo "aarray[${k}] = ${aarray[${k}]}"
 done
+
+echo "---------- Walk the directory tree and return all files and directories ----------"
+find playarea
+
+echo "---------- Return only matching glob results ----------"
+find playarea -name "foo*"
+
+echo "---------- Inverse glob matching ----------"
+find playarea ! -name "foo*"
+
+echo "---------- Return only regular files ----------"
+find playarea -type f
+
+echo "---------- Return only directories ----------"
+find playarea -type d
+
+# {} is replaced by every output of find
+# \; ends the arguments of -exec flag
+echo "---------- Execute a command on each result ----------"
+find playarea -type f -exec echo 'foo --- {} --- bar' \;
+
+echo "---------- Execute one command with all results as arguments ----------"
+find playarea -type f -exec echo {} + ;
+
+# xargs converts output to stdout to command arguments
+echo "---------- Execute a command on each result using xargs ----------"
+find playarea -type f | xargs cat
