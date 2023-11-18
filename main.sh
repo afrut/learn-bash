@@ -24,7 +24,6 @@ printf "%s %d\n" "hello" 1
 # quotes perform variable expansion.
 echo 'Single quotes: ${PLAY_AREA}'
 echo "Double quotes: ${PLAY_AREA}"
-exit 0
 
 echo "----------------------------------------"
 echo "  Working with files and directories"
