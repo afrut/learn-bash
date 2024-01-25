@@ -201,6 +201,9 @@ find playarea -type f -exec echo {} + ;
 echo "---------- Execute a command on each result using xargs ----------"
 find playarea -type f | xargs cat
 
+# Don't run if STDIN is empty
+echo "" | xargs --no-run-if-empty cat
+
 # Get the 3rd column of a command's output. -F specifies the delimiter
 printf "foo    bar    baz    qaz\nspam   ham    eggs   bacon\n" \
     | awk -F ' ' '{print $3}'
